@@ -5,7 +5,12 @@ import coreservlets.business.model.IdEntity;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import org.springframework.transaction.annotation.Transactional;
 
 public class JPAGenericDAO<T extends IdEntity> implements GenericDAO<T> {
@@ -57,6 +62,21 @@ public class JPAGenericDAO<T extends IdEntity> implements GenericDAO<T> {
         cq.select(cq.from(clazz));
         return this.entityManager.createQuery(cq).getResultList();
 
+    }
+
+    @Transactional(readOnly = true)
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<T> findByField(String field, String data) {
+        CriteriaBuilder builder = this.entityManager.getCriteriaBuilder();
+        CriteriaQuery<T> cQuery = builder.createQuery(clazz);
+        Root<T> from = cQuery.from(clazz);
+        CriteriaQuery<T> select = cQuery.select(from);
+        Expression<String> name = from.get(field);
+        Predicate eq = builder.equal(name, data);
+        select.where(eq);
+        TypedQuery typedQuery = this.entityManager.createQuery(select);
+        return typedQuery.getResultList();
     }
 
     @Override

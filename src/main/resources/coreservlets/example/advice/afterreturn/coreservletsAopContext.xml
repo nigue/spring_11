@@ -8,12 +8,12 @@
     http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
   <bean id="afterReturningLoggingAdvice"
-        class="coreservlets.advice.afterreturn.AfterReturningLoggingAdvice" />
+        class="coreservlets.example.advice.afterreturn.AfterReturningLoggingAdvice" />
 
   <aop:config>
 
     <aop:pointcut id="customerQueryPointcut"
-      expression="execution(* coreservlets.CustomerQuery.*(..))" /> 
+      expression="execution(* coreservlets.business.dao.CustomerDAO.*(..))" /> 
 
     <aop:advisor advice-ref="afterReturningLoggingAdvice"
                  pointcut-ref="customerQueryPointcut" />
