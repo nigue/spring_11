@@ -1,6 +1,8 @@
 package coreservlets.example.advice.afterreturn;
 
 import coreservlets.business.dao.CustomerDAO;
+import coreservlets.business.model.Customer;
+import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -24,7 +26,11 @@ public class Main {
 
         CustomerDAO customerDAO = (CustomerDAO) beanFactory.getBean("customerDAO");
 
-        customerDAO.findByField("name", "comprador1");
+        List<Customer> customers = customerDAO.findByField("name", "comprador1");
+        
+        for (Customer customer : customers) {
+            LOGGER.debug("\n -----> " + customer);
+        }
 
     }
 }
