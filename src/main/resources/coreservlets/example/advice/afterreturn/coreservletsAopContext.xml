@@ -13,7 +13,7 @@
   <aop:config>
 
     <aop:pointcut id="customerQueryPointcut"
-      expression="execution(* coreservlets.business.dao.jpa.JPACustomerDAO.*(..))" /> 
+      expression="execution(* coreservlets.business.dao.GenericDAO.*(..))" /> 
 
     <aop:advisor advice-ref="afterReturningLoggingAdvice"
                  pointcut-ref="customerQueryPointcut" />

@@ -12,17 +12,12 @@ public class AfterReturningLoggingAdvice implements AfterReturningAdvice {
     @Override
     public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable {
 
-        LOGGER.debug("\n ---AOP--> " + 
-                target.getClass().getSimpleName()
-                + "#" + method.toGenericString()
-                + ". args=" + Arrays.toString(args)
-                + ". exit=return[" + returnValue + "]");
-        
-        Logger.getLogger(target.getClass()).debug(
-                target.getClass().getSimpleName()
-                + "#" + method.toGenericString()
-                + ". args=" + Arrays.toString(args)
-                + ". exit=return[" + returnValue + "]");
+        LOGGER.debug("******AOP******\n"
+                + target.getClass().getSimpleName()
+                + "\n# " + method.toGenericString()
+                + "\n. args = " + Arrays.toString(args)
+                + "\n. exit = return[" + returnValue + "]"
+                + "\n******AOP******");
 
     }
 }

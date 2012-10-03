@@ -1,4 +1,4 @@
-package coreservlets.example.advice.afterreturn;
+package coreservlets.example.advice.afterthrows;
 
 import coreservlets.business.dao.CustomerDAO;
 import coreservlets.business.model.Customer;
@@ -9,27 +9,21 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
 
-    private static final Logger LOGGER = Logger.getLogger(Main.class);
+    private static final Logger LOGGER = Logger.getLogger(coreservlets.example.advice.afterreturn.Main.class);
 
     public static void main(String[] args) {
 
         BeanFactory beanFactory = new ClassPathXmlApplicationContext(new String[]{
-                    "/coreservlets/example/advice/afterreturn/coreservletsAopContext.xml",
+                    "/coreservlets/example/advice/afterthrows/coreservletsAopContext.xml",
+                    "/coreservlets/example/advice/afterthrows/coreservletsContext.xml",
                     "/coreservlets/example/coreservletsContext.xml",
                     "classpath:modelContext.xml"});
 
-//        CustomerQuery query = (CustomerQuery) beanFactory.getBean("customerQuery");
-//
-//        query.getCustomerByName("Java Joe");
-        
-        LOGGER.debug("/////////////inicio de main////////////");
-
         CustomerDAO customerDAO = (CustomerDAO) beanFactory.getBean("customerDAO");
 
-//        List<Customer> customers = customerDAO.findByField("name", "comprador1");
-        
+
         List<Customer> customers = customerDAO.findAll();
-        
+
         for (Customer customer : customers) {
             LOGGER.debug("[" + customer + "]");
         }
