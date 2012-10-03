@@ -40,11 +40,11 @@ public class ErrorThrowingMockCustomerQuery implements CustomerDAO {
         try {
             throw throwableType.newInstance();
         } catch (InstantiationException e) {
-            log.error("Error: error generation. Failed to generate error: "
+            log.debug("Error: error generation. Failed to generate error: "
                     + this.throwableType);
             return null;
         } catch (IllegalAccessException e) {
-            log.error("Error: error generation. Failed to generate error: "
+            log.debug("Error: error generation. Failed to generate error: "
                     + this.throwableType);
             return null;
         }    }
