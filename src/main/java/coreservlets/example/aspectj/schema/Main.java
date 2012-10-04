@@ -1,4 +1,4 @@
-package coreservlets.example.advice.afterreturn;
+package coreservlets.example.aspectj.schema;
 
 import coreservlets.business.dao.CustomerDAO;
 import coreservlets.business.model.Customer;
@@ -14,19 +14,11 @@ public class Main {
     public static void main(String[] args) {
 
         BeanFactory beanFactory = new ClassPathXmlApplicationContext(new String[]{
-                    "/coreservlets/example/advice/afterreturn/coreservletsAopContext.xml",
-                    "/coreservlets/example/coreservletsContext.xml",
+                    "/coreservlets/example/aspectj/schema/coreservletsAopContext.xml",
+                    "/coreservlets/example/aspectj/schema/coreservletsContext.xml",
                     "classpath:modelContext.xml"});
 
-//        CustomerQuery query = (CustomerQuery) beanFactory.getBean("customerQuery");
-//
-//        query.getCustomerByName("Java Joe");
-
-        LOGGER.debug("/////////////inicio de main////////////");
-
         CustomerDAO customerDAO = (CustomerDAO) beanFactory.getBean("customerDAO");
-
-//        List<Customer> customers = customerDAO.findByField("name", "comprador1");
 
         List<Customer> customers = customerDAO.findAll();
 

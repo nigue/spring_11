@@ -23,7 +23,10 @@ public class LoggingMethodAdvice implements MethodInterceptor {
                     + t.getClass().getName() + " - " + t.getMessage();
             throw t;
         } finally {
-            Logger.getLogger(i.getThis().getClass()).debug(buf);
+            Logger.getLogger(i.getThis().getClass()).debug(
+                    "******AOP******\n" + 
+                    buf + 
+                    "\n******AOP******");
         }
     }
 }

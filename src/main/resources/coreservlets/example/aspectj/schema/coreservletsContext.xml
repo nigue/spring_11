@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+<!--    <bean id="customerReport"
+        class="coreservlets.MockCustomerReport">
+        <constructor-arg ref="customerQuery" />
+    </bean>
+
+    <bean id="customerQuery"
+        class="coreservlets.MockCustomerQuery">
+        <constructor-arg>
+            <list>
+                <bean class="coreservlets.Customer">
+                    <property name="id" value="jjoe" />
+                    <property name="name" value="Java Joe" />
+                </bean>
+                <bean class="coreservlets.Customer">
+                    <property name="id" value="jjohn" />
+                    <property name="name" value="Java John" />
+                </bean>
+                <bean class="coreservlets.Customer">
+                    <property name="id" value="jspring" />
+                    <property name="name" value="Java Spring" />
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>-->
+  
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="com.mysql.jdbc.Driver" 
+          p:url="jdbc:mysql://localhost/spring_test"
+          p:username="root" 
+          p:password="root" />
+  
+</beans>

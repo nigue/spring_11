@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 import org.springframework.aop.AfterReturningAdvice;
 
 public class AfterReturningLoggingAdvice implements AfterReturningAdvice {
-    
+
     private static final Logger LOGGER = Logger.getLogger(AfterReturningLoggingAdvice.class);
 
     @Override

@@ -9,7 +9,6 @@ public class ErrorThrowingMockCustomerQuery implements CustomerDAO {
 
     private static final Logger log =
             Logger.getLogger(ErrorThrowingMockCustomerQuery.class);
-
     private Class<? extends RuntimeException> throwableType;
 
     public ErrorThrowingMockCustomerQuery(
@@ -47,7 +46,8 @@ public class ErrorThrowingMockCustomerQuery implements CustomerDAO {
             log.debug("Error: error generation. Failed to generate error: "
                     + this.throwableType);
             return null;
-        }    }
+        }
+    }
 
     @Override
     public List<Customer> findByField(String field, String data) {
