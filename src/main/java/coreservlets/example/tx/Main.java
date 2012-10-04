@@ -11,9 +11,8 @@ public class Main {
     public static void main(String[] args) {
 
         BeanFactory beanFactory = new ClassPathXmlApplicationContext(new String[]{
-                   
-                    "/coreservlets/example/coreservletsContext.xml",
-                    "classpath:modelContext.xml"});
+                    "/coreservlets/example/tx/coreservletsTxContext.xml",
+                    "/coreservlets/example/coreservletsContext.xml"});
 
         CustomerDAO customerDAO = (CustomerDAO) beanFactory.getBean("customerDAO");
         Customer customer = new coreservlets.business.model.Customer();
